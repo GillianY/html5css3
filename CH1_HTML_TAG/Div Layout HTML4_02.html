@@ -3,8 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Div Layout By Gillian</title>
-    <link href="../reset.css" rel="stylesheet"/>
+    <title>Div Layout HTML4</title>
     <style type="text/css">
             body{
             margin:0px;
@@ -12,7 +11,6 @@
         }
     
     div,header,footer,article,aside,nav,section,figure,dl{
-		display:block;
             border:2px #333 solid;
             margin:5px;
         }
@@ -51,7 +49,7 @@
         .content4{
             width:98%;
             height:100px;
-            overflow:auto; /*v scroller bar*/
+            overflow:auto;
         }
         .level3{
             background:#888;
@@ -80,21 +78,7 @@
             text-decoration:none;
             color:black;
         }
-		
-		input:valid{border-color:#399;}
-		input:required{border-color:green;}
-		input:valid{border-color:red;}
-		
     </style>
-    
-    <script src="../modernizr-latest.js"></script>
-    <script>
-	  	$(document).ready(init);
-		function init(){
-			
-			}
-	
-    </script>
 </head>
 
 <body>
@@ -119,7 +103,7 @@
              </section>
              <div class="content3 level2">content3 <br>
                     <figure class="content3inner1 level3">content3 inner1
-                        <img class="imgclass1" src="" alt="img01">  
+                         <img class="imgclass1" src="" alt=""/>  
                         <figcaption>照片/圖表<br> </figcaption> 
                     </figure>
                     <dl class="content3inner2 level3">content3 inner2 
@@ -129,50 +113,9 @@
                     </dl>		
               </div>
               <div class="content4 level2">
-                 <form id="messages" action="http://www.google.com/search" target="_blank" method="get" autocomplete="off">content4 
+                 <form id="messages">content4 
                     <fieldset>
-                    <legend>留言 1</legend><p>comment 2</p><p>comment 3</p><p>comment 4</p>		
-                    
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="q" placeholder="input here" autogocus required tabindex="1">
-                    <br>
-                    <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" list="countrylist" tabindex="3">
-                        <datalist id="countrylist">
-                                <option value='USA'></option>
-                                <option value='Canada'></option>
-                             <option value='China'></option>
-                                <option value='Japan'></option>
-                                <option value='Taiwan'></option>
-                           
-                     
-                        </datalist>	
-                        <br>
-                        <label for="myselect">Country2:</label>
-                        <select id="myselect" name="myselect" >
-                        	  <optgroup label="American">
-                                <option value='USA'>USA</option>
-                                <option value='Canada'>Canada</option>
-                            </optgroup>
-                            <optgroup label="Asia">
-                                <option value='China'>China</option>
-                                <option value='Japan'>Japan</option>
-                                <option value='Taiwan'>Taiwan</option>
-                            </optgroup>
-                        </select>
-                        <br>
-                        
-                        <label for="comment">Message:</label>
-                        <textarea id="comment" name="comment" tabindex="2">Comment</textarea >
-                        <br>
-                        <label for="age">Age:</label>
-                        <input id="age" type="range" max="100" min="1" onChange="myoutput.innerHTML=this.value" step="1" default="50">
-                        </input>
-                        <output id="myoutput">50</output>
-                         <br>
-                    <input type="submit" formaction="http://www.yahoo.com.tw" />
-                    
-                    
+                    <legend>留言 1</legend><p>comment 2</p><p>comment 3</p><p>comment 4</p>
                     </fieldset>
                 </form>
                </div>
