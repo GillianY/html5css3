@@ -22,12 +22,28 @@
 
         function init() {
             //檢查有無支援navigator.onLine
+			
+			if(navigator.onLine != undefined)
+			{
+					document.getElementById("check").addEventListener("click",checkHandler);
+			}else
+			{  alert( "navigatoronLine not support");
+				}
 
         }
 
         //偵測連線狀態
         function checkHandler() {
-
+			if(navigator.onLine)
+			{
+					document.getElementById("status").className="online";
+					document.getElementById("status").innerHTML="Online!!";		
+			}else
+			{
+				
+					document.getElementById("status").className="offline";
+					document.getElementById("status").innerHTML="Offline!!";	
+				}
         }
 
     </script>

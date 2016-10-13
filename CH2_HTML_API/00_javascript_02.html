@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+		body{
+			background:#FCF;
+			margin:auto;
+			width:500px;/**/
+			margin-top: 30px;
+			}
+		.example img{
+			background:#63F;
+			border:#C6F dashed 4px;
+			padding:3px;
+			margin:5px;
+			
+			}	
+	
+	</style>
+    <script src="../jquery.js"></script>
+    <script>
+		window.onload=init;
+		/*
+		 $(window).load=init;
+		 $(document).ready=init;
+		*/
+		function  init()
+		{
+			var Str="";
+			var btn =document.getElementById("btn2"); // $("#btn2")
+			var btn =document.getElementsByClassName("myClass"); // $(".myClass")
+			//btn[0]
+			var btn =document.getElementByTag("button"); // $("button")
+			//btn[0]
+			var btn =document.getElementByName("btn"); // $("button[anme=btn]") //selector
+			//btn[0]
+			
+			
+			for (var i=0; i< btn.length; i++){
+			btn[i].addEventListener("click",clickHandler);
+		}
+			
+			
+			document.getElementById("btn2").onclick=clickhandler;
+			
+			document.getElementById("btn3").addEventListener("click",clickhandler);
+			$("#btn3").get(0).addEventListener("click",clickhandler);	
+			$("#btn4").on("click",clickhandler);
+			$(document.getElementById("btn5")).bind("click",clickhandler);
+			$(document.getElementById("btn5")).bind("click",clickhandler1);
+			document.getElementById("btn5").appendValue ="hello Gillian";
+			
+			$("#btn5").before($("btn4").clone());
+			$("#btn5").wrap("<div>");
+			}
+			
+		
+		function clickhandler(e)
+		{
+			console.log(e);//("this:"+this+":"+this.value);
+		}
+			
+			function clickAgainhandler(e)
+			{ console.log("hi again");
+			}
+			
+			function clickPosition(e)
+			{
+				var x=e.clientX;
+				var y= e.clientY;
+				consloe.log(x+":"+y);
+				
+				}
+    	
+    </script>
+</head>
+
+<body>
+    <button id="btn1" class="myClass" value="myBtn1" onClick="clickhandler()"> Btn1 </button> <!--advoid this means window -->
+    <button id="btn2" class="myClass" value="myBtn2" > Btn2 </button>
+    <button id="btn3" name="btn" value="btn3" > btn3 </button>
+    <button id="btn4" value="btn4" > btn4 </button>
+    <button id="btn5" value="btn5" name="btn" > btn5 </button>
+    
+</body>
+</html>

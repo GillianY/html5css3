@@ -14,8 +14,8 @@
 }
 
 #content{
-	width:450px;
-	height:100px;
+	width:600px;
+	height:300px;
 	border:1px dashed black;
 	padding:10px;
 }
@@ -31,48 +31,67 @@
 	color:white;
 }
 </style>
+<script src="../jquery.js"></script>
 <script type="text/javascript">
 //init事件註冊
-
+window.addEventListener("load",init);
 function init()
 {
 	//檢查有無支援contentEditable
-	if(true)
+	//$("<span>") // jquery :setter getter
+	if(!($("<span>").attr("contentEditable")))
+	{
+		$("#status").text("contentEditable support");
+		//$("#editable")
+		//alert(0);	
+	}else
+	{
+		
+	}	
+	
+	
+	/*
+	if(document.createElement("span").contentEditable != undefined )
 	{
 		//顯示支援度
-		
+		document.getElementById("status").innerHTML=" contentEditable support";
 		//editable click 事件註冊 
-		
+		document.getElementById("editable").addEventListener("click",buttonShowHandler);
 		//document click 事件註冊 
-		
+		document.addEventListener("click",buttonHideHandler);
 		//svae buttton click 事件註冊
-		
+		document.getElementById("save").addEventListener("click",saveHandler);
 	}
 	else
 	{
 		//顯示支援度
-		
+		document.getElementById("status").innerHTML="contentEditable not support";
 	}
+	*/
 }
 
 //按鈕顯示邏輯
 function buttonShowHandler(e)
 {
-	
+	document.getElementById("save").style.display="block";
+	document.getElementById("status").innerHTML ="Click save to copy text";
+	if(e.stopPropagation) // show function native code
+	{e.stopPropagation();}  // stop bubble flow
 }
 
 //按鈕隱藏邏輯
 function buttonHideHandler()
 {
-	
+	document.getElementById("save").style.display="none";
+	document.getElementById("status").innerHTML ="Click tontents to save";
 }
 
 //資料儲存
-function saveHandler()
+function saveHandler(e)
 {
-	
+	document.getElementById("status").innerHTML = document.getElementById("editable").innerHTML;
+	if(e.stopPropagation) {e.stopPropagation();} // stop bubble flow
 }
-
 </script>
 </head>
 
@@ -81,7 +100,7 @@ function saveHandler()
 <div id="status">Click text area to edit text.</div>
 <h1>Inline Editor</h1>
 <div id="content">
-    <div id="editable">
+    <div id="editable" contenteditable="true">
         It stands strong and true, resilient and universal as the markup you write. It shines as bright and as bold as the forward-thinking, dedicated web developers you are. It's the standard's standard, a pennant for progress. And it certainly doesn't use tables for layout.
     </div>
     <button id="save">Save</button>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+		body{
+			background:#FCF;
+			margin:auto;
+			width:500px;/**/
+			margin-top: 30px;
+			}
+		.example img{
+			background:#63F;
+			border:#C6F dashed 4px;
+			padding:3px;
+			margin:5px;
+			
+			}	
+	
+	</style>
+    <script src="../jquery.js"></script>
+    <script>
+		window.onload=init;
+		/*
+		 $(window).load=init;
+		 $(document).ready=init;
+		*/
+		function  init()
+		{
+			document.getElementById("btn2").onclick=clickhandler;
+			// onclick function will cover the above onclick function //only one
+			//MouseEvent {isTrusted: true, screenX: 142, screenY: 260, clientX: 129, clientY: 42…}
+			
+			
+			document.getElementById("btn3").addEventListener("click",clickhandler);
+			// eventlistener will continue add  // many clickhandler funcs 
+			
+			//$("#btn3")[0].addEventListener("click",clickhandler);
+			$("#btn3").get(0).addEventListener("click",clickhandler);	
+		
+		
+			//$(document.getElementById("btn4")).on("click",clickhandler); 
+			$("#btn4").on("click",clickhandler);
+			// jquery .on("click") == addEventlistner
+			
+			//b.Event {originalEvent: MouseEvent, type: "click", timeStamp: 6366.790000000001, jQuery191011784990146288266: true, toElement: button#btn4…}
+			
+			
+			
+			$(document.getElementById("btn5")).bind("click",clickhandler);
+			$(document.getElementById("btn5")).bind("click",clickhandler1);
+			
+			//clickPosition
+			
+			document.getElementById("btn5").appendValue ="hello Gillian";
+			
+			$("#btn5").before($("btn4").clone());
+			$("#btn5").wrap("<div>");
+			}
+			
+		
+		function clickhandler(e)
+		{
+			
+			//console.log(document.getElementById("btn5").appendValue);
+			console.log(e);//("this:"+this+":"+this.value);
+			/* 
+			Btn1:window >undefined Event
+			Btn2:Object >Mouse Event
+				clinetX, clientY
+			*/
+			}
+			
+			function clickAgainhandler(e)
+			{ console.log("hi again");
+			}
+			
+			function clickPosition(e)
+			{
+				var x=e.clientX;
+				var y= e.clientY;
+				consloe.log(x+":"+y);
+				
+				}
+    	
+    </script>
+</head>
+
+<body>
+    <button id="btn1" value="myBtn1" onClick="clickhandler()"> Btn1 </button> <!--advoid this means window -->
+    <button id="btn2" value="myBtn2" > Btn2 </button>
+    <button id="btn3" value="btn3" > btn3 </button>
+    <button id="btn4" value="btn4" > btn4 </button>
+    <button id="btn5" value="btn5" > btn5 </button>
+    
+</body>
+</html>

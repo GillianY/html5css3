@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+	
+			
+			#outter{
+				background-color:#999;
+				border: 1px dotted black;
+				width:200px;
+				height:200px;
+				}
+				
+			#inner{
+				background-color:pink; 
+				border: 1px dotted gray;
+				width:100px;
+				height:100px;
+				
+				margin:34px 50px;
+
+				}
+	
+	</style>
+    <script src="../jquery.js"></script>
+    <script>
+		window.onload=init;
+		/*
+		 $(window).load=init;
+		 $(document).ready=init;
+		*/
+		function  init()
+		{
+			document.getElementById("outter").addEventListener("click",clickhandleroutter,false);
+			document.getElementById("inner").addEventListener("click",clickhandlerinner,false);
+			document.getElementById("inner").addEventListener("click",innerAgainHandler,false);
+			//bubbling capture  
+			
+			//useCapture :false 
+			//click inner ->  2 target (inner) >3 capture (outer)
+			
+			//useCapture :true 
+			//click inner -> 1 capture(outter) > 2 target (inner) 
+		}
+			
+		
+		function clickhandleroutter(e)
+		{console.log("this:"+this.id+" target:"+e.target.id +" currentTarget:"+ e.currentTarget.id);
+			}
+			
+			
+		function clickhandlerinner(e)
+		{console.log("this:"+this.id+" target:"+e.target.id+" currentTarget:"+ e.currentTarget.id);
+			}
+			
+			function innerAgainHandler(e)
+		{
+			console.log("this:"+this.id+" target:"+e.target.id+" currentTarget:"+ e.currentTarget.id);
+			e.stopPropagation();
+			}
+			
+				function innerAgainHandler2(e)
+		{
+			console.log("this Again:"+this.id+" target:"+e.target.id);
+			e.stopImmediatePropagation();
+			}
+			
+			
+			
+			function clickAgainhandler(e)
+			{ console.log("hi again");
+			}
+			
+			function clickPosition(e)
+			{
+				var x=e.clientX;
+				var y= e.clientY;
+				consloe.log(x+":"+y);
+				
+				}
+    	
+    </script>
+</head>
+
+<body>
+  <div id="outter" value="divoutter">outter
+  	<div id="inner"  value="divinner">inner</div>
+  </div>
+    
+</body>
+</html>

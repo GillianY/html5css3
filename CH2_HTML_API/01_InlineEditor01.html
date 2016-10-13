@@ -1,0 +1,146 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inline Editor</title>
+<style type="text/css">
+
+table{
+	border:1px gray solid;
+	
+	}
+td{
+	border:1px blue solid;
+	}	
+	
+ul{
+	font:14px/2  Verdana, Geneva, sans-serif;
+	
+	}	
+li{
+	font:12px/2 Verdana, Geneva, sans-serif;
+	color:#C9C;
+	}	
+	
+.class0{
+	border:#C9C 1px solid;
+	}
+	
+.class1{
+	background-color:#99F;
+	}
+	
+	.class2{
+	background-color:#CC6; /*green*/
+	}
+	
+
+</style>
+<script src="../jquery.js"></script>
+<script type="text/javascript">
+//init事件註冊
+window.addEventListener("load",init);
+
+function init()
+{
+	/*
+	$("ul li:even").addClass("class1");
+	$("ul li:last").addClass("class1");
+	$("ul li:not(:first)").addClass("class1");
+	$("ul li:eq(0)").addClass("class1");
+	
+	$("ul li:nth-child(3)").addClass("class1");
+	$("ul li:nth-child(3n+2)").addClass("class1");
+	$("ul li:last-child").addClass("class1");
+	
+	$("tr:even").addClass("class1");
+	
+	$("ul:has('li')").addClass("class1");
+	$("ul[class]").addClass('class0');
+	$(":text").attr();
+	*/
+	$("ul[class='class2']").addClass('class0');
+	
+	$(":input").addClass("class0");
+	$(":text").addClass("class1");
+	
+	$( "#greatphoto" ).attr( "title", 
+							function( i, val ) {
+ 									 return val + " - photo by Kelly Clark";});
+	
+	
+
+}
+
+</script>
+</head>
+
+<body>
+
+<img id="greatphoto" class="class0" name="img01" src="images/song3.jpg" alt="brush seller">
+<table contenteditable="false">
+	<tr>
+    	<td>ID</td>
+    	<td>Name</td>
+    	<td>number</td>
+    </tr>
+    <tr>
+    	<td>1</td>
+    	<td contenteditable="true">tom</td>
+    	<td contenteditable="true">0911</td>
+    </tr>
+    <tr>
+    	<td>2</td>
+    	<td contenteditable="true">gina</td>
+    	<td contenteditable="true">9010</td>
+    </tr>
+
+
+</table>
+
+<div id="booklist">
+	<ul class='class2'>novel
+    	<li> novel1</li>
+    	<li>novel1</li>
+    	<li>novel1</li>
+    	<li>novel1</li>
+    </ul>
+    <ul class='class2'>program
+    	<li>Java</li>
+    	<li>object C</li>
+    	
+    </ul>
+    <ul>travel
+    	<li>travel1</li>
+    	<li>travel2</li>
+    	<li>travel1</li>
+    </ul>
+    <ul>language
+   		 <li>English</li>
+    	<li>Italian</li>
+    	<li>Francaise</li>
+    	<li>Janpanese</li>
+    	<li>Chinese</li>
+    </ul>
+	<ul>comic</ul>
+
+</div>
+
+<div>
+<input type="text" name="txt" value ="txt01"/>txt001<hr> 
+<input type="submit" value="submit"/><hr>
+
+ <p>
+        <label> select: </label>
+        <select name="select">
+          <option>option1</option>
+          <option>option2</option>
+          <option>option3</option>
+        </select>
+      </p>
+
+
+</div>
+
+</body>
+</html>

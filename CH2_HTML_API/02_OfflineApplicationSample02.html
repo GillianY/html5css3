@@ -21,17 +21,20 @@
         function init() {
             document.getElementById("check").addEventListener("click", checkHandler);
             //自動偵測window連線狀態
-
-        }
+			window.addEventListener("online",onlineHandler);
+			window.addEventListener("offline",offlineHandler);
+       }
 
         //連線
         function onlineHandler() {
-
+			alert("online");
+			checkHandler();
         }
 
         //離線
         function offlineHandler() {
-
+			alert("offline");
+			checkHandler();
         }
 
         //偵測連線狀態
