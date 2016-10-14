@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -43,8 +44,50 @@ body{
 }
 </style>
 <script>
-/*wrire code here*/
+var audio;
+window.addEventListener("load",init);
+function init(){
+	document.getElementById("playButton").addEventListener("click",playHandler);
+	document.getElementById("pauseButton").addEventListener("click",pauseHandler);
+	document.getElementById("volumeUpButton").addEventListener("click",upHandler);
+	document.getElementById("volumeDownButton").addEventListener("click",downHandler);
+	audio = document.getElementById("audioPlayer");
+	audio.addEventListener("play",startPlayHandler);
+	audio.addEventListener("timeupdate",timeupdateHandler);
+	audio.addEventListener("ended",endedHandler);
+}
 
+function startPlayHandler(){
+	document.getElementById("status").innerHTML="Start play!";
+}
+function timeupdateHandler(){
+//	document.getElementById("status").innerHTML="Time:"+audio.currentTime+" Druation:"+audio.duration;
+	document.getElementById("status").innerHTML="Time:"+converter(audio.currentTime)+" Druation:"+converter(audio.duration);
+}
+function converter(timeInput){
+	var mins=Math.floor(timeInput/60);
+    var secs= Math.floor(timeInput%60);
+	//secs = secs<10 ? "0"+secs:secs;
+	if(secs<10 ) secs="0"+secs;
+	return mins +":"+secs;
+}
+function endedHandler(){
+	document.getElementById("status").innerHTML="Ended!";
+}
+
+
+function playHandler(){
+	audio.play();
+}
+function pauseHandler(){
+	audio.pause();
+}
+function upHandler(){
+	audio.volume+=0.1;
+}
+function downHandler(){
+	audio.volume-=0.1;
+}
 </script>
 </head>
 
@@ -53,7 +96,13 @@ body{
 <h1 id="title">My World - WE ARE FM</h1>
 <div>
     <img id="cover" src="images/song1.jpg">
-	<!--write code here-->
+	<!--write code here          http://caniuse.com/-->
+	<!--controls autoplay loop muted-->
+    <audio id="audioPlayer" controls>
+    	<source src="images/song1.mp3" type="audio/mp3">
+    	<source src="images/song1.ogg" type="audio/ogg">
+    	Your browser does not support the audio tag!
+    </audio>
 </div>
 <div>
 	<input type="button" id="playButton" value="play">

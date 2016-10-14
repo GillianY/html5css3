@@ -25,6 +25,52 @@ input[type="text"]{
 <script>
 /*write code here*/
 
+window.addEventListener("load",init);
+
+function init()
+{
+	if(localStorage)
+	{
+		document.getElementById("status").innerHTML="support localstorage";	
+		document.getElementById("saveButton").addEventListener("click",saveHandler );
+		document.getElementById("clearButton").addEventListener("click",clearHandler);
+	}else
+	{
+		document.getElementById("status").innerHTML="support localstorage";
+		}
+
+	
+}
+
+function restore()
+{
+	//document.getElementById("firstName").value= localStorage.getItem("firstName");
+	}
+	
+function saveHandler()
+{	//alert(0);
+    // alert(document.getElementById("firstName").value);
+	var firstNameValue= document.getElementById("firstName").value; //not value()
+	var habitValue= document.getElementById("habit").value;
+	
+	localStorage.setItem("name",firstNameValue);
+	localStorage.setItem("habit",habitValue);
+	}	
+	
+function clearHandler()
+{
+	/*
+	localStorage.removeItem("name");
+	localStorage.removeItem("habit");
+	
+	for(var key in localStorage)
+	{
+		localStorage.removeItem(key);
+	}
+	*/
+	localStorage.clear();
+}
+
 </script>
 </head>
 
@@ -32,7 +78,7 @@ input[type="text"]{
 <h1 id="status">status</h1>
 <div>
 	<label>Name:</label>
-    <input type="text" id="fisrstName"/>
+    <input type="text" id="firstName"/>
 </div>
 <div>
 	<label>Habit:</label>

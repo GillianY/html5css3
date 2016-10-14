@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>session Stroage</title>
+<title>Local Stroage</title>
 <style>
 div{
 	padding:5px;
@@ -29,15 +29,15 @@ window.addEventListener("load",init);
 
 function init()
 {
-	if(sessionStorage)
+	if(localStorage)
 	{
-		document.getElementById("status").innerHTML="support sessionstorage";	
+		document.getElementById("status").innerHTML="support localstorage";	
 		document.getElementById("saveButton").addEventListener("click",saveHandler );
 		document.getElementById("clearButton").addEventListener("click",clearHandler);
-		//restoreData(); //when load , getstorage data
+		restoreData(); //when load , getstorage data
 	}else
 	{
-		document.getElementById("status").innerHTML="support sessionstorage";
+		document.getElementById("status").innerHTML="support localstorage";
 		}
 
 	
@@ -45,8 +45,10 @@ function init()
 
 function restoreData()
 {
-	document.getElementById("firstName").value= sessionStorage.getItem("name");
-	document.getElementById("habit").value= sessionStorage.getItem("habit");
+	document.getElementById("firstName").value= localStorage.getItem("name");
+	document.getElementById("habit").value= localStorage.getItem("habit");
+	
+	
 	}
 	
 function saveHandler()
@@ -55,39 +57,37 @@ function saveHandler()
 	var firstNameValue= document.getElementById("firstName").value; //not value()
 	var habitValue= document.getElementById("habit").value;
 	
-	sessionStorage.setItem("name",firstNameValue);
-	sessionStorage.setItem("habit",habitValue);
+	localStorage.setItem("name",firstNameValue);
+	localStorage.setItem("habit",habitValue);
 	}	
 	
 	
-
+window.addEventListener("storage",storageHandler);	
 function clearHandler()
 {
 	/*
-	sessionStorage.removeItem("name");
-	sessionStorage.removeItem("habit");
+	localStorage.removeItem("name");
+	localStorage.removeItem("habit");
 	
-	for(var key in sessionStorage)
+	for(var key in localStorage)
 	{
-		sessionStorage.removeItem(key);
+		localStorage.removeItem(key);
 	}
 	*/
-	sessionStorage.clear();
+	localStorage.clear();
 	
 	document.getElementById("firstName").value= "";
 	document.getElementById("habit").value= "";
 }
 
-/*
-// close this page , session clear
-window.addEventListener("storage",storageHandler);	
+
 function storageHandler(e)
 {
 	//alert( );
 	console.log(e.key+":"+e.oldValue+"_new:"+e.newValue+"_who:"+e.url);
 	restoreData();	
 }
-*/
+
 </script>
 </head>
 

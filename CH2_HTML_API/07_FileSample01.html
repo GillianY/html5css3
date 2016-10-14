@@ -27,17 +27,34 @@ window.addEventListener("load", init);
 
 function init()
 {
+	file =document.getElementById("fileInput");
+	file.addEventListener("change",fileChangeHandler);
+	
+	reader= new Reader();
+	reader.addEventListener("load",loadendHandler);
 	/*write code here*/
 }
 
 function fileChangeHandler()
 {
-	
+	if(file.files.length >0)
+	{
+		var selectFile = file.files[0];
+		
+		var message ="File Name"+selectFile.name+"<br>" +
+					"File Size"+selectFile.size+"<br>"+ 
+					"File Type"+selectFile.type+"<br>";
+					
+		document.getElementById("status").innerHTML =  message;
+		 
+		reader.readAsDataURL(selectFile); 
+	}
 }
 
 function loadendHandler()
 {
-	
+	document.getElementById("preview").src = reader.result; 
+	document.getElementById("preview").style.display = "block"; 
 }
 
 </script>

@@ -20,6 +20,7 @@ img{
 <script>
 var dropbox = undefined;
 var reader = undefined;
+var img =undefined;
 
 window.addEventListener("load", init);
 
@@ -27,26 +28,42 @@ function init()
 {
 	/*write code here*/
 	//拖曳事件
-	
+	dropbox = document.getElementById("dropBox");
+	dropbox.addEventListener("dragover",dragoverHandler);
 	//放下事件
-	
+	dropbox.addEventListener("drop",dropHandler);
 	//讀檔
 	
 }
 
 function dragoverHandler(e)
 {
-	
+		e.preventDefault(); // must 
 }
 
 function dropHandler(e)
 {
+	e.preventDefault();
+	var file = e.dataTransfer.files[0];
+	var fileType = file.type;
 	
+	if(fileType.indexOf('image')==-1)
+	{
+		alert(" only accept image ");
+		return;
+	}
+	img = document.createElement("img"); // not image
+	reader = new FileReader(); // filereader not reader
+	reader.addEventListener("load",loadendHandler) //don't forget
+	reader.readAsDataURL(file);
 }
 //讀檔完畢
 function loadendHandler()
 {
-	
+	//img = document.createElement("image"); // cannot be here should create earlier
+	img.src=  reader.result; //this.result
+	dropbox.innerHTML=""; // clear old string and images
+	dropbox.appendChild(img);
 }
 
 </script>

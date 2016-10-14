@@ -17,10 +17,10 @@ a:hover{
 
 <script type="text/javascript">
 
-var data = {User1:{name:"anistar", age:18}, 
-			User2:{name:"john", age:20}, 
-			User3:{name:"mary", age:32}, 
-			User4:{name:"kitty", age:45}};
+var data = {User1:{name:"anistar", age:18,img:"icon01.jpg"}, 
+			User2:{name:"john", age:19,img:"icon02.jpg"}, 
+			User3:{name:"mary", age:20,img:"icon03.jpg"}, 
+			User4:{name:"kitty", age:21,img:"icon04.jpg"}};
 
 window.addEventListener("load", init);
 function init()
@@ -28,19 +28,28 @@ function init()
 	if(history.pushState)
 	{
 		document.getElementById("status").innerHTML = "HTML5 History API available";
-	}
-	document.getElementById("examples").addEventListener("click", clickHandler);
+		
+		document.getElementById("examples").addEventListener("click", clickHandler);
+		document.getElementById("backButton").addEventListener("click", backHandler);
+		document.getElementById("forwardButton").addEventListener("click", forwardHandler);
+	}else
+	{document.getElementById("status").innerHTML = "HTML5 History API is not available";}
+	
 	//按鈕行為註冊
 		
 }
 function backHandler()
 {
-
+		//history.back();
+		
+		history.go(-1);
 }
 
 function forwardHandler()
 {
-	
+	//	history.forward();
+		history.go(1);
+
 }
 
 function clickHandler(e)
@@ -52,19 +61,34 @@ function clickHandler(e)
 		var url = e.target.getAttribute("href");
 		history.pushState(data[title], title, url);
 		//歷史紀錄更新
-		
+		updateHistory();
 	}
 }
 
+
+window.addEventListener("popstate",popstateHandler);
 //歷史紀錄更新
 function updateHistory()
 {
+	
+	if(history.state)
+	{
+		var message= history.state.name+":"+history.state.age;
+		document.getElementById("output").innerHTML=message;
+		document.getElementById("myimg").src="images/"+ history.state.img;
+		
+	}
+	else
+	{
+		document.getElementById("output").innerHTML= "no Data in history"; // default blank
+	}
 
 }
 
 function popstateHandler()
 {
 	
+	updateHistory();
 }
 
 </script>
@@ -83,6 +107,11 @@ function popstateHandler()
     <li><a href="fourth">User4</a></li>
   </ul>
   <div id="output"></div>
+  
+   <input type="button" id="backButton" value="BACK"/>
+   <input type="button" id="forwardButton" value="FORWARD"/>
+	<img src="" id="myimg">
+
 </article>
 
 </body>

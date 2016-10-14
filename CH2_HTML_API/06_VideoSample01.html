@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -30,56 +31,94 @@ function init()
 	document.getElementById("volumeDownButton").addEventListener("click", volumeDownHandler);
 	
 	//video 事件註冊
+	video = document.getElementById("videoPlayer");
 	
-	//全螢幕按鈕 事件註冊
-	
-	
+	video.addEventListener("play",startPlayHandler);
+	video.addEventListener("timeupdate",timeupdateHandler);
+	video.addEventListener("ended",endedHandler);
 }
+
+function startPlayHandler(){
+	document.getElementById("status").innerHTML="Start play!";
+}
+function timeupdateHandler(){
+	document.getElementById("status").innerHTML="Time:"+converter(video.currentTime)+" Druation:"+converter(video.duration);
+}
+function converter(timeInput){
+	var mins=Math.floor(timeInput/60);
+    var secs= Math.floor(timeInput%60);
+	//secs = secs<10 ? "0"+secs:secs;
+	if(secs<10 ) secs="0"+secs;
+	return mins +":"+secs;
+}
+function endedHandler(){
+	document.getElementById("status").innerHTML="Ended!";
+}
+
 //播放
 function playHandler()
 {
-	
+	video.play();
 }
 //暫停
 function pauseHandler()
 {
-
+	video.pause();
 }
 //加音量
 function volumeUpHandler()
 {
-	
+	video.volume+=0.1;
 }
 //減音量
 function volumeDownHandler()
 {
-	
+		video.volume-=0.1;
 }
 //播放開始
 function startPlayHandler()
 {
-	
+	document.getElementById("status").innerHTML="Viedio Start to play!";
 }
 //播放歷程
 function timeUpdateHandler()
 {
-	
+	document.getElementById("status").innerHTML="Ended!";
 }
 //播放結束
 function endedHandler()
 {
-	
+	document.getElementById("status").innerHTML="video Ended!";
 }
 //全螢幕
 function fullscreenHandler(e)
 {
-	
+		
+	if (video.requestFullscreen) {  //default old
+	  video.requestFullscreen();
+	} else if (video.mozRequestFullScreen) {  //mozilla firefox
+	  video.mozRequestFullScreen();
+	} else if (video.webkitRequestFullscreen) { //chrome safari
+	  video.webkitRequestFullscreen();
+	}else if(video.msRequestFullScreen) //ie
+	{
+		video.msFullscreenElement();
+		}else {alert("video tag not support");}
 }
+
+
+function checkStatus(){}
+
 </script>
 
 </head>
 
 <body>
+ 	<!--controls autoplay loop muted width="300" height="500"-->
+   <video id="videoPlayer" controls  muted poster="images/icon03.jpg">
+    	<source src="images/test.mp4" type="video/mp4">
+    	Your browser does not support the video tag!
+    </video>
 
 
 <div>

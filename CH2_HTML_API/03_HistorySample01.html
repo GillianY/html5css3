@@ -17,16 +17,55 @@ a:hover{
 <script>
 //Data JSON
 
+var data = {User1:{name:"anistar", age:18}, 
+			User2:{name:"john", age:20}, 
+			User3:{name:"mary", age:32}, 
+			User4:{name:"kitty", age:45}};
+
 window.addEventListener("load", init);
 
 function init()
 {
+	if(history.pushState)
+	{
+		document.getElementById("status").innerHTML="HTML hisTORY api avalible";
+		document.getElementById("examples").addEventListener("click",clickHandler)	;
+		}
+	else
+	{	document.getElementById("status").innerHTML="HTML hisTORY api Not avalible";
+		
+		}
+		
+	
+	
 }
 
 //click處理邏輯
 function clickHandler(e)
 {
+	if(e.preventDefault)
+	{	e.preventDefault();
+	}
+	
+	if(e.target.nodeName =="A")
+	{ 	 var title = e.target.innerHTML();
+		var url =e.target.getAttribute("href");
+		var  message = data[title].name+"-"+data[title].age;
+		document.getElementById("output").innerHTML=message;
+ 		history.pushState(data[title],title,url);
+		
+		}	
+	
 }
+
+function backHistoryHandler(e)
+{
+}
+	
+	function forwardHistoryHandler(e)
+	{
+		
+	}
 
 </script>
 </head>
@@ -43,6 +82,8 @@ function clickHandler(e)
     <li><a href="fourth">User4</a></li>
   </ul>
   <div id="output"></div>
+  <input type="button" id="backButton" value="BACK"/>
+   <input type="button" id="forwardButton" value="FORWARD"/>
 </article>
 
 </body>
