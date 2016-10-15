@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+		body{
+			
+			margin:auto;
+			width:500px;
+			
+			}
+			.outer{
+				margin:0px;
+				width:320px;
+				background:#FCF;
+				
+				}
+		.inner{
+			width:100px;
+			height:100px;
+			background:#96F;
+			float:left;
+			padding:10px;
+			border:10px black dashed;
+			margin:10px;
+			}
+		.inner2{
+			background:#CF9;
+			}	
+	
+	</style>
+    
+    <script src="../jquery.js"></script> 
+    <script >
+   	window.addEventListener("load",init);
+	// document.ready(init);
+	
+	function init()
+	{
+			
+		var p1=  new Person( "Gina", 20);
+		var p2= {};
+		Person.call(p2,"Gillian",22);
+		console.log(p1.toString()+"\n"+p2.toString());
+		console.log("\n p1.constructor==Person:"+ (p1.constructor ==Person) +"\t"+p1.name+"\t"+p1.age+"\n");
+		console.log("\n p2.constructor==Person: "+ (p2.constructor ==Person) +"\t"+p2.name+"\t"+p2.age+"\t"+p2.constructor.toString()+"\n");	
+			
+		Person2.call(p2,"Subrina",25); 
+		console.log(p2.getName()+":"+p2.getAge()+"\n");	
+		
+		p2 = new Accounts();
+		p2.setBalance(100);
+		console.log(p2.getBalance()+":"+p2.balance+"\n"); // p2.balance : undefined;
+			
+	}
+	
+	
+	function Person(name, age)
+	{
+		this.age=age;
+		this.name=name;
+		this.toString = function (){ return this.name+":"+this.age; };
+		//return this;	
+	}
+	function Person2(name, age)
+	{
+		this.getName = function(){return name;}; //closure
+		this.getAge = function(){return age;};
+		this.toString = function (){ return this.name+":"+this.age; };
+		//return this;	
+	}
+	
+	function Accounts(){
+		var balance=0;
+		this.setBalance= function(money){
+			 if(money <0 ){throw new Error('money cannot be negative');};
+			 		balance= money; };	
+					
+		this.getBalance = function() {
+          return balance;
+       };
+	}
+	
+	
+    </script>
+</head>
+
+<body>
+	<div class="outer">
+		<div class ="inner inner1">icon1</div> 
+        <div class ="inner inner2">icon2</div>
+	</div>
+</body>
+</html>

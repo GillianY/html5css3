@@ -30,6 +30,13 @@ document.write("ar2="+ar2+"<br>");
 
 alert(ar1.slice(2,4));//slice(起始號碼 包含,結束號碼 不包含)
 alert(ar1.splice(1,2));//ar.splice(起始號碼,刪除長度);
+ar2 = ar1.splice(1,0,"test1","test2"); // insert
+alert("ar1:"+ar1);
+//alert("ar2:"+ar2); //null : nothing delete
+
+//splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,...
+
+//http://www.cnblogs.com/yuzhongwusan/archive/2008/12/15/1355378.html  
 
 </script>
 </head>

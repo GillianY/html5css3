@@ -93,16 +93,43 @@ function endedHandler()
 //全螢幕
 function fullscreenHandler(e)
 {
+	/*
+	  if (divObj.requestFullscreen)   
+        if (document.fullScreenElement) {
+            document.cancelFullScreen();       
+        } else {
+          divObj.requestFullscreen();
+        }
+      else if (divObj.msRequestFullscreen)
+        if (document.msFullscreenElement) {
+            document.msExitFullscreen();
+          } else {
+          divObj.msRequestFullscreen();
+        }
+      else if (divObj.mozRequestFullScreen)
+        if (document.mozFullScreenElement) {
+            document.mozCancelFullScreen();
+        } else {
+          divObj.mozRequestFullScreen();
+        }
+      else if (divObj.webkitRequestFullscreen)
+        if (document.webkitFullscreenElement) {
+            document.webkitCancelFullScreen();
+          } else {
+          divObj.webkitRequestFullscreen();
+        }
+	*/	
+		
 		
 	if (video.requestFullscreen) {  //default old
 	  video.requestFullscreen();
-	} else if (video.mozRequestFullScreen) {  //mozilla firefox
+	} else if (video.mozFullScreenElement) {  //mozilla firefox
 	  video.mozRequestFullScreen();
 	} else if (video.webkitRequestFullscreen) { //chrome safari
 	  video.webkitRequestFullscreen();
-	}else if(video.msRequestFullScreen) //ie
+	}else if(video.msRequestFullscreen) //ie
 	{
-		video.msFullscreenElement();
+		video.msRequestFullscreen();
 		}else {alert("video tag not support");}
 }
 

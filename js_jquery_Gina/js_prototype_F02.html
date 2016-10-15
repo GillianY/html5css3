@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+		body{
+			
+			margin:auto;
+			width:500px;
+			}
+		.inner{
+			width:100px;
+			height:100px;
+			background:#96F;
+			float:left;
+			padding:10px;
+			border:10px black dashed;
+			margin:10px;
+			}
+		.inner2{
+			background:#CF9;
+			}	
+	
+	</style>
+    
+    <script src="../jquery.js"></script> 
+    <script >
+   	window.addEventListener("load",init);
+	// document.ready(init);
+		function Person(name, age)
+	{
+		this.age=age;
+		this.name=name;
+		//return this;	
+	} 	
+	
+	function init()
+	{
+		Person.prototype.toString = function (){
+		return this.name+":"+this.age+"\n";};
+		
+		p1 = new Person('Justin', 35);
+		p2 = new Person('Momor', 32);
+		console.log(p1.prototype  ); //undefined
+		console.log(Person.prototype  ); // Object ,constructor= function Person(name, age)
+		console.log(p1.constructor  ); //function Person
+		console.log(Person ); //function Person
+		console.log(p1.toString()+"\n"); 
+		console.log(p2.toString()+"\n"); 
+	
+		
+	}
+	
+
+
+	
+    </script>
+</head>
+
+<body>
+	<div class="outer">
+		<div class ="inner inner1">icon1</div> 
+        <div class ="inner inner2">icon2</div>
+	</div>
+</body>
+</html>

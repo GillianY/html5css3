@@ -30,7 +30,7 @@ function init()
 	file =document.getElementById("fileInput");
 	file.addEventListener("change",fileChangeHandler);
 	
-	reader= new Reader();
+	reader= new FileReader(); // not reader
 	reader.addEventListener("load",loadendHandler);
 	/*write code here*/
 }
@@ -49,6 +49,8 @@ function fileChangeHandler()
 		 
 		reader.readAsDataURL(selectFile); 
 	}
+	////http://www.freeformatter.com/mime-types-list.html
+
 }
 
 function loadendHandler()
@@ -64,7 +66,7 @@ function loadendHandler()
 
 
 <div>
-	<input type="file" id="fileInput" value="">
+	<input type="file" id="fileInput" value="" accept="image/jpeg,image/png">
 </div>
 <div id="status"></div>
 <img id="preview">
