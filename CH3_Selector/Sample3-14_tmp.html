@@ -7,6 +7,8 @@
 #tabs{
 	padding:0;
 	margin:0;
+	background:pink;
+	/*overflow: auto;*/
 }
 
 #tabs li{
@@ -23,7 +25,8 @@ a.tab{
 }
 
 #container{
-	/*clear:both;
+	clear:both; /*not float:left*/
+	/*
 	position:relative;
 	top:0px;
 	left:0px;*/
@@ -79,6 +82,7 @@ function init()
 <body>
 <h1>Target</h1>
 <ul id="tabs">
+  	<!--test-->
     <li><a href="#tab1" class="tab">TAB 1</a></li>
     <li><a href="#tab2" class="tab">TAB 2</a></li>
     <li><a href="#tab3" class="tab">TAB 3</a></li>
