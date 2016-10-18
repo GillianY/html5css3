@@ -3,8 +3,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Canvas</title>
+    
+    <style>
+	
+	#banner{
+		width:400;
+		height:200;
+		background:"pink";
+		border: 2px blue dotted; 
+		}
+		
+		#banner2
+		{
+			width:600;
+		height:250;
+		background:"pink";
+		border: 2px blue dotted; 
+			
+		}
+	
+	</style>
     <script>
-        window.addEventListener("load", drawBanner);
+        window.addEventListener("load", init);
         function drawBanner() {
             /*write code here*/
 			
@@ -15,21 +35,21 @@
 			
         }
 
-        function loadCompleteHandler(e) {
+        function init(e) {
 			//alert(0);
 			
 			var canvas = document.getElementById("banner");
 			var cxt = canvas.getContext("2d");
-			cxt.drawImage(this,0,0);	
+			//cxt.drawImage(this,0,0);	
 			
 			cxt.lineWidth=20;
 			cxt.lineJoin ="miter";
 			cxt.strokeStyle="#A3C";
 			
 			cxt.beginPath();
-			cxt.moveTo(300,80);
+			cxt.moveTo(100,80);
+			cxt.lineTo(100,200);
 			cxt.lineTo(300,200);
-			cxt.lineTo(900,200);
 			cxt.stroke();
 			
 
@@ -38,10 +58,15 @@
 </head>
 <body>
 
-<canvas id="banner" width="910" height="425">
+<canvas id="banner" width="410" height="225">
 Your browser does not support canvas. Please upgrade to the lastest version of Chrome, Firefox or Safari.
 </canvas>
 
+
+<svg id=" banner2">
+	<line x1="100" y1="80" x2="100" y2="200" stroke="red" stroke-width="20px">
+
+</svg>
 
 </body>
 </html>

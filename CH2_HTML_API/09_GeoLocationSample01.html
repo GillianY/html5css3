@@ -12,10 +12,24 @@ function init()
 {
 /*write code here*/
 //判斷是否支援Geo Location
+
+if(geo = getGeoLocation())
+{
+	document.getElementById("title").innerHTML="Geo support";
+}else
+{ document.getElementById("title").innerHTML="Geo Not support";
+	}
 }
 
 function getGeoLocation()
 {
+	
+	if(navigator.geolocation)
+	{	console.log(navigator.geolocation);
+		//alert(navigator.geolocation);
+		return navigator.geolocation; }
+	else
+	{return false;}
     
 }
 </script>

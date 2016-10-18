@@ -43,7 +43,16 @@ function init()
 		
 		/*write code here*/
 		//拖曳相關事件註冊
+		var dragItem = document.getElementById("dragImage");
+		dragItem.addEventListener("dragstart",dragstartHandler);
+		dragItem.addEventListener("drag",dragHandler);
+		dragItem.addEventListener("dragend",dragendHandler);
 		
+		var dropIZone = document.getElementById("dropZone");
+		dropIZone.addEventListener("dragenter",dragenterHandler);
+		dropIZone.addEventListener("dragover",dragoverHandler);
+		dropIZone.addEventListener("dragleave",dragleaveHandler);
+		dropIZone.addEventListener("drop",dropHandler);
 	}
 	else
 	{
@@ -52,13 +61,37 @@ function init()
 	}
 }
 
+function dragstartHandler(e){
+	messageObj.innerHTML += "dragstart";
+}
+function dragHandler(e){
+	messageObj.innerHTML +="drag";
+}
+function dragendHandler(e){
+	messageObj.innerHTML +="dragend";
+	
+}function dragenterHandler(e){
+	messageObj.innerHTML +="dragenter";
+	
+}function dragleaveHandler(e){
+	messageObj.innerHTML +="dragleave";
+}
+function dropHandler(e){
+	//messageObj.innerHTML +="drop";
+	
+	e.preventDefault();
+}
+function dragoverHandler(e){
+	messageObj.innerHTML += "dragover";
+}
+
 </script>
 </head>
 
 <body>
 <div id="gameContainer">
 	<h1>Scissors, Rock and Paper game</h1>
-    <p class="message">Game Start!!!</p>
+    
     <div id="gameArea">
     	<div id="srp1" class="srp">
         	<img id="dragImage" src="images/Scissors.png" draggable="true">
@@ -66,8 +99,13 @@ function init()
         </div>
         <div class="srp">
             <img id="dropZone" src="images/DropZone.png" draggable="false">
+            
+             <br><br><br><br><br><br><br><br>
+<p class="message">Game Start!!!</p>
             <footer>Drop Here!!!</footer>
         </div>
+       
+
     </div>
 </div>
 

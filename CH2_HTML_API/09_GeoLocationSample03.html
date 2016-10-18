@@ -21,6 +21,8 @@ function init()
 		// alert("NO");
 		document.getElementById("title").innerHTML = "Geolocation is not supported.";
 	}
+	
+	geo.getCurrentPosition(showCoords,errorHandler,{timeout:3000,maximumAge:10000});
 }
 
 function getGeoLocation()
@@ -43,11 +45,30 @@ function showCoords(position)
 
 	document.getElementById("latitude").innerHTML = lat.toString();
 	document.getElementById("longitude").innerHTML = lon.toString();
+	
+	window.open("http://maps.google.com/maps?q="+lat+","+lon,"_self");
+
 }
 
 function errorHandler(error)
 {
 	/*write code here*/
+	
+	switch( error.code)
+	{
+			case error.TIMEOUT:
+			alert("Geo TIMEOUT"); 
+			break;	
+			case error.POSITION_UNAVAILABLW:
+			alert("Geo POSITION_UNAVAILABLW"); 
+			break;	
+			case error.PERMISSION_DENIED:
+			alert("Geo PERMISSION_DENIED"); 
+			break;
+			default:
+			alert("Geo error:"+error.code); 
+			
+	}
 }
 </script>
 

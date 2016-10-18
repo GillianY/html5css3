@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS margin/padding/border</title>
+	<style type="text/css">
+		body{
+			
+			margin:auto;
+			width:500px;
+			}
+		.inner{
+			width:100px;
+			height:100px;
+			background:#96F;
+			float:left;
+			padding:10px;
+			border:10px black dashed;
+			margin:10px;
+			}
+		.inner2{
+			background:#CF9;
+			}	
+	
+	</style>
+    
+    <script src="../jquery.js"></script> 
+    <script >
+   	window.addEventListener("load",init);
+
+	function Car(){
+		Car.prototype.wheels=4;
+	}
+	function SportCar()
+	{
+		SportCar.prototype = new Car();
+		SportCar.prototype.doors=2; 
+	}
+
+
+	function init()
+	{
+
+		Object.prototype.xyz = 10;
+		var s = new Some();
+ 		console.log(s);
+		console.log(s.prototype); // undefuiiend
+		
+		var sportcars =  new SportCar();
+		console.log("sportcars.doors:"+	sportcars.doors); // undefuiiend
+		console.log("sportcars.wheels"+sportcars.wheels); // undefuiiend
+		console.log(sportcars.prototype); // undefuiiend
+		
+		console.log(SportCar);
+		console.log(SportCar.prototype); //car
+		console.log(SportCar.wheels); //undefined !!
+		console.log(SportCar.doors);  //undefined 
+		
+		console.log(sportcars);
+		console.log(sportcars.prototype); //undefuiiend
+		
+		console.log(sportcars.wheels); //undefined !!
+		console.log(sportcars.doors);  //undefined 
+		
+		
+	}
+	
+	
+
+ function Some() {}
+ 
+
+	
+
+
+	
+    </script>
+</head>
+
+<body>
+	<div class="outer">
+		<div class ="inner inner1">icon1</div> 
+        <div class ="inner inner2">icon2</div>
+	</div>
+</body>
+</html>

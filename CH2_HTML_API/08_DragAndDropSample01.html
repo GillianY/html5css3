@@ -24,12 +24,30 @@ var dragSupport = undefined;
 function isDragEnabled()
 {
 	/*write code here*/
+	
+	if("draggable" in document.createElement("span"))
+	{return true;}
+	else
+	{return false;}
 
 }
 
 window.addEventListener("load", init);
 function init()
 {
+		var msgObj = document.getElementsByClassName("message")['0'];
+	
+	if(isDragEnabled)
+	{
+	
+		
+		msgObj.innerHTML = "suppor draggerable";
+	}
+	else
+	{
+		msgObj.innerHTML = "Not suppor draggerable";
+		}
+	
 	
 }
 
@@ -42,11 +60,11 @@ function init()
     <p class="message">Game Start!!!</p>
     <div id="gameArea">
     	<div id="srp1" class="srp">
-        	<img id="dragImage" src="images/Scissors.png">
+        	<img id="dragImage" src="images/Scissors.png" draggable="true">
             <footer>Scissors</footer>
         </div>
         <div class="srp">
-            <img id="dropZone" src="images/DropZone.png">
+            <img id="dropZone" src="images/DropZone.png"  draggable="false">
             <footer>Drop Here!!!</footer>
         </div>
     </div>

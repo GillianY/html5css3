@@ -14,6 +14,7 @@ function init()
     {
         document.getElementById("title").innerHTML = "Support"; 
 		/*write code here*/
+		geo.getCurrentPosition(showCoords);
     }
     else
     {
@@ -24,7 +25,12 @@ function init()
 /*write code here*/
 function showCoords(e)
 {
-    
+    var lat = e.coords.latitude;
+	var lon = e.coords.longitude;
+	
+	 document.getElementById("latitude").innerHTML = lat.toString();
+	  document.getElementById("longitude").innerHTML = lon.toString();
+
 }
 
 </script>

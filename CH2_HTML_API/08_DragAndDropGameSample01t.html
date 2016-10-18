@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,8 +35,8 @@
 }
 </style>
 
+<script src="../jquery.js"></script>
 <script>
-
 var dragSupport;
 var messageObj;
 var darggingElement;
@@ -54,105 +55,80 @@ window.addEventListener("load", init);
 function init()
 {
     messageObj = document.getElementsByClassName("message")[0];
-    
     if(dragSupport = isDragEnabled())
     {
         messageObj.innerHTML = "Drag and drop support.";
-		//write code here
-		
 		var elements = document.getElementsByTagName("img");
-		
-		for(var i =0; i<elements.length;i++)
-		{ //alert(elements[i]);
-			elements[i].addEventListener("dragstart",dragstartHandler);
-			elements[i].addEventListener("dragend",dragendHandler);
-			elements[i].addEventListener("dragover",dragoverHandler);
-			elements[i].addEventListener("dragenter",dragenterHandler);
-			elements[i].addEventListener("dragleave",dragleaveHandler);
-			elements[i].addEventListener("drop",dropHandler);
-			}
-		
+		for (var i=0; i<elements.length; i++){
+			elements[i].addEventListener("dragstart", dragstartHandler);
+			elements[i].addEventListener("dragend", dragendHandler);
+			elements[i].addEventListener("dragover", dragoverHandler);
+			elements[i].addEventListener("dragenter", dragenterHandler);
+			elements[i].addEventListener("dragleave", dragleaveHandler);
+			elements[i].addEventListener("drop", dropHandler);
+		}
     }
     else
     {
         messageObj.innerHTML = "Drag and drop not support.";
     }
 }
-/*write code here*/
+
 function dragstartHandler(e)
-{  this.className="moving";
-   this.style.opacity = 0.4;
-   
-   e.dataTransfer.setDragImage(this,100,100);
-   darggingElement = this; //e.target;
-   messageObj.innerHTML="Drag:"+this.getAttribute("name");//"Scissors"
-  
-	
-	
+{
+	this.className="moving";
+	this.style.opacity=0.4;
+	e.dataTransfer.setDragImage(this,100,100);
+	draggingElement=this;// img scissors
+	messageObj.innerHTML="Drag:"+this.getAttribute("name");//"Scissors"
 }
 
 function dragendHandler(e)
 {
-    this.style.opacity = 1;
-	 darggingElement=null;
-	// this.className="srp";
-	 
-   
-   
+   this.style.opacity=1;
+   draggingElement=null;//取消dragStart時的拖曳元件設定
 }
 
 function dragenterHandler(e)
-{this.className="over";
-   //this.style.border="5px dashed gray";
+{
+	this.className="over";
 }
 
 function dragoverHandler(e)
 {
-	if( e.preventDefault)
-    {e.preventDefault();}else{alert("prevnetDefault"); }
+    e.preventDefault(); // prevent drag
 }
 
 function dragleaveHandler(e)
 {
 	this.className="normal";
-   // this.style.border="1px solid black";
 }
 
 function dropHandler(e)
 {
-	if( e.preventDefault)
-{ e.preventDefault();}else{alert("prevnetDefault");}
-//e.stopPropagation();
-  this.className="normal";
- checkWinner(darggingElement,this);
- 
+	e.preventDefault();	
+	this.className="normal";
+	checkWinner(draggingElement,this);
 }
-
+//var winners ={Rock:"Paper",Paper:"Scissors",Scissors:"Rock"};
 function checkWinner(dragging,dropping){
-   
    var dragType = dragging.getAttribute("name");
    var dropType = dropping.getAttribute("name");
-   if(dragType == dropType)
-   { messageObj.innerHTML="Tie";
-   return;
-	   }
-	 if(dragType == winners[dropType])
-	 {
-		 messageObj.innerHTML=dragType+"_vs_"+dropType+"_WIN";
-		 }else
-	 {    messageObj.innerHTML=dragType+"_vs_"+dropType+"_LOSE";
-		 
-		 }   
-	   
-  
-   
+   //alert(dragType+"/"+dropType);
+	if (dragType == dropType){
+		messageObj.innerHTML=dragType + " / " + dropType +" are Tie";
+		return;
+	}
+	if (dragType == winners[dropType]){
+	   messageObj.innerHTML=dragType + " Win / " + dropType +" Lose";
+	}else{
+	   messageObj.innerHTML=dragType + " Lose / " + dropType +" Win";
+	}
 }
-
 </script>
 </head>
 
 <body>
-
 <div id="gameContainer">
 	<h1>Scissors, Rock and Paper game</h1>
     <p class="message">Game Start!!!</p>
@@ -171,6 +147,5 @@ function checkWinner(dragging,dropping){
         </div>
     </div>
 </div>
-
 </body>
 </html>

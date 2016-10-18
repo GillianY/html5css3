@@ -65,6 +65,10 @@ function dragstartHandler(e)
 	messageObj.innerHTML = "Drag start!";
 	/*write code here*/
 	
+	e.dataTransfer.setData ( "myData" ,e.target.dataset.value);
+	
+	console.log(e.target);//dragImage
+	
 }
 
 
@@ -91,6 +95,10 @@ function dropHandler(e)
 {
 	messageObj.innerHTML = "Drop!";
 	/*write code here*/
+	console.log(e.dataTransfer.getData ( "myData"));
+	
+	console.log(e.dataTransfer);
+	console.log(e.target); //dropZone
 }
 
 
@@ -105,7 +113,7 @@ function dropHandler(e)
     <p class="message">Game Start!!!</p>
     <div id="gameArea">
     	<div id="srp1" class="srp">
-        	<img id="dragImage" src="images/Scissors.png" draggable="true">
+        	<img id="dragImage" src="images/Scissors.png" draggable="true" data-value="scissors" data-abc=''>
             <footer>Scissors</footer>
         </div>
         <div class="srp">
