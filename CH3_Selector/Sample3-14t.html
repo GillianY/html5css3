@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -23,12 +24,8 @@ a.tab{
 }
 
 #container{
-	
 	clear:both;
-	background:#CCC;
-	/*position:relative;
-	top:0px;
-	left:0px;*/
+	position:relative;
 }
 
 #container h1{
@@ -39,20 +36,19 @@ a.tab{
 	margin-bottom:5px;
 }
 /*write code here*/
-
 .tab_content{
 	padding:10px;
-	border: 2px solid black;
+	border:1px solid black;
+	width:300px;
+	height:200px;
+	background:#eee;
 	position:absolute;
 	left:0px;
 	top:0px;
-	width:400px;
-	height:300px;
-	background:#999;
-	}
+}
 .tab_content:target{
 	z-index:1;
-	}
+}
 a.selectedtab{
 	text-decoration:none;
 	background:red;
@@ -62,30 +58,23 @@ a.selectedtab{
 a:hover {
 	background:blue;
 }
-
 </style>
 <script>
 /*write code here*/
 var list;
 window.addEventListener("load",init);
-function init()
-{
-	list= document.getElementsByTagName("a");
-	for(var i =0; i<list.length;i++)
-	{
-		list[i].addEventListener("click",clickhandler);
+function init(){
+	list = document.getElementsByTagName("a");
+	for (var i=0; i< list.length; i++){
+		list[i].addEventListener("click",clickHandler);
 	}
 }
-
-function clickhandler()
-{
-	for(var i =0; i<list.length;i++)
-	{
-		list[i].className="tab";
+function clickHandler(){
+	for (var i=0; i< list.length; i++){
+		list[i].className = "tab";
 	}
-	this.className="selectedtab";
-	//this.style.className= "a.selectedtab";
-	
+
+	this.className = "selectedtab";
 }
 
 </script>
@@ -96,9 +85,8 @@ function clickhandler()
 <ul id="tabs">
     <li><a href="#tab1" class="tab">TAB 1</a></li>
     <li><a href="#tab2" class="tab">TAB 2</a></li>
-    <li><a href="#tab3" class="tab">TAB 3</a></li>
+    <li><a href="#tab3" class="selectedtab">TAB 3</a></li>
 </ul>
-
 <div id="container">
     <div id="tab1" class="tab_content">
     	<h1>Use The Logo</h1>

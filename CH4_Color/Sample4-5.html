@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -24,9 +25,23 @@ p{
 
 #container{
 	margin:10px auto;
-	/*write code here*/
+	/*write code here prefix*/
 
 	background:url(images/hyml5_bg.jpg);
+	background:-webkit-linear-gradient(red,blue);
+	background:-o-linear-gradient(red,blue);
+	background:-ms-linear-gradient(red,blue);
+	background:-moz-linear-gradient(red,blue);
+	background:linear-gradient(red,blue);
+	background:linear-gradient(red,yellow,blue);
+	background:linear-gradient(45deg,red,yellow,blue);
+	background:linear-gradient(-45deg,red,yellow,blue);
+	background:linear-gradient(90deg,red,yellow,blue);
+	background:linear-gradient(90deg,red 0%,yellow 80%,blue 100%);
+	background:linear-gradient(90deg,red 50%,yellow 80%,blue 100%);
+	background:linear-gradient(90deg,red 50%,yellow 50%,yellow 80%,blue 100%);
+	background:linear-gradient(90deg,red 0%,yellow 20%,blue 40%);
+	background:repeating-linear-gradient(90deg,red 0%,yellow 20%,blue 40%);
 	
 	width:600px;
 	height:375px;
@@ -43,6 +58,7 @@ p{
 	left:40px;
 	top:90px;
 	opacity:0.8;
+	display:none;
 }
 
 #show{
@@ -55,6 +71,7 @@ p{
 	left:230px;
 	top:220px;
 	overflow:auto;
+	display:none;
 }
 
 

@@ -28,10 +28,17 @@
 	text-shadow:0 2px 2px black;
 }
 
+/*
+flex-grow : 0 取預設寬度 120px;
+felx-grow :　2	 取120px + ( 剩下來多的寬度　＊ 2/ 1+2+3+4)
+			也就是多出來的寬度依照 FLex- grow 比例分配 
+
+*/
+
 #item1{
 	/*modify code here*/
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow:0;
+	flex-grow:0;
 }
 
 #item2{
@@ -40,18 +47,18 @@
 }
 
 #item3{
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow:2;
+	flex-grow:2;
 }
 
 #item4{
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow:3;
+	flex-grow:3;
 }
 
 #item5{
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow:4;
+	flex-grow:4;
 }
 
 </style>
